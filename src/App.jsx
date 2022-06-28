@@ -1,4 +1,6 @@
 import { useEffect } from "react"
+import SearchContainer from "./components/Search/SearchContainer"
+import Title from "./components/Title/Title"
 
 const API_URL = "https://www.omdbapi.com?apikey=" + process.env.REACT_APP_API_KEY
 
@@ -10,12 +12,15 @@ const App = () => {
     },[])
 
     return (
-        <div className="bg-gray-900 w-screen h-screen">
-            {/* //TODO Title */}
-            {/* //TODO Search */}
+        <div className="overflow-hidden bg-gray-800 w-screen h-screen">
+            {/* //TODO? Title */}
+            <Title />
+            {/* //TODO? Search */}
+            <SearchContainer />
+
+            
             {/* //TODO CardsWrapper */}
 
-        
 
         </div>
     )
