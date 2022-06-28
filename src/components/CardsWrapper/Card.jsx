@@ -7,7 +7,7 @@ const Card = ({title, type, year, url}) => {
         <h3 className="block uppercase">{type}</h3>
         <p>{title} - {year}</p>
       </div>
-      <img src={url} className="w-full h-full" alt="idk" />
+      <img src={url} className="w-full h-full" alt={title} />
     </div>
   );
 };
