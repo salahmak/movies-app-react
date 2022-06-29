@@ -1,11 +1,13 @@
-import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import {createBrowserHistory} from "history"
 
-const SearchContainer = ({ searchMovies }) => {
-    const [query, setQuery] = useState("");
+const history = createBrowserHistory();
+
+const SearchContainer = ({ searchMovies, query, setQuery }) => {
 
     const enterEvent = (e) => {
         if (e.key === "Enter" && query.length > 0) {
+            history.push(`/?query=${query}`, {some: "state"});
             searchMovies(query);
         }
     };

@@ -4,7 +4,7 @@ const CardsWrapper = ({ movies }) => {
     return (
         <div className="flex flex-wrap justify-center content-center gap-5 p-5">
             {movies.length === 0 ? (
-                <div>No results</div>
+                <div className="text-gray-400">No results</div>
             ) : (
                 movies.map(({ Title, Year, Poster, Type, imdbID }) => {
                     return (
