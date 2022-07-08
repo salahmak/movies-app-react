@@ -26,11 +26,17 @@ const App: React.FC = (): JSX.Element => {
 
                 //setting state with result
                 setMovies(
-                    data.Search.map(({ Title, Year, Poster, Type, imdbID }: Movie) => {
-                        if (Poster !== "N/A") {
-                            return { Title, Year, Poster, Type, imdbID };
-                        }
-                    })
+
+
+                    /** the Movies fetching API returns an array with many properties, so we map it to only bring the ones we need (title, poster, year, type, imdbId)
+                     * 
+                     * The data.Search.map() function takes a callback function with has a Movie object and returns a Movie object
+                     * 
+                     * the cascaded .filter() function removes the Movie objects which have Poster property set to "N/A" to filter the movies that don't have a poster from the array returned by .map()
+                    */
+                    data.Search.map(({ Title, Year, Poster, Type, imdbID }: Movie) : Movie => {
+                        return { Title, Year, Poster, Type, imdbID };
+                    }).filter((m: any) => m.Poster !== "N/A")
                 );
             } catch (err) {
                 setMovies([]);
