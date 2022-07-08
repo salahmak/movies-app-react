@@ -4,11 +4,18 @@ import {createBrowserHistory} from "history"
 
 const history = createBrowserHistory();
 
-const SearchContainer = ({ searchMovies, query }) => {
+
+interface SearchProps {
+    searchMovies: (query: string) => Promise<void>;
+    query: string;
+}
+
+
+const SearchContainer : React.FC<SearchProps> = ({ searchMovies, query}) : JSX.Element => {
 
     const [searchInput, setSearchInput] = useState("");
 
-    const enterEvent = (e) => {
+    const enterEvent = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter" && query.length > 0) {
             history.push(`/?query=${searchInput}`, {some: "state"});
             searchMovies(searchInput);

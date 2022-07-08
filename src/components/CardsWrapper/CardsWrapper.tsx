@@ -1,19 +1,21 @@
 import Card from "./Card";
+import Movie from "../../Types";
 
-const CardsWrapper = ({ movies }) => {
+interface CardsWrapperProps {
+    movies: Movie[];
+}
+
+const CardsWrapper: React.FC<CardsWrapperProps> = ({ movies }) : JSX.Element => {
     return (
         <div className="flex flex-wrap justify-center content-center gap-5 p-5">
             {movies.length === 0 ? (
                 <div className="text-gray-400">No results</div>
             ) : (
-                movies.map(({ Title, Year, Poster, Type, imdbID }) => {
+                movies.map((movie: Movie) => {
                     return (
                         <Card
-                            title={Title}
-                            type={Type}
-                            year={Year}
-                            url={Poster}
-                            key={imdbID}
+                            movie={movie}
+                            key={movie.imdbID}
                         />
                     );
                 })
